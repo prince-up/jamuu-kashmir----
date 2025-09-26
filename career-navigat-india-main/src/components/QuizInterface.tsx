@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Brain, Clock, CheckCircle } from "lucide-react";
+import { Brain, Clock, CheckCircle, Gift, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const QuizInterface = () => {
@@ -12,6 +12,13 @@ const QuizInterface = () => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [answers, setAnswers] = useState<string[]>([]);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
+  const [bonusClaimed, setBonusClaimed] = useState(false);
+  const [showBonus, setShowBonus] = useState(false);
+  // Bonus progress state
+  const bonusThreshold = 23;
+  const answeredCount = answers.filter(a => a && a !== "").length + (selectedAnswer ? 1 : 0);
+  const bonusProgress = Math.min(answeredCount / bonusThreshold, 1);
+  const canClaimBonus = answeredCount >= bonusThreshold && !bonusClaimed;
 
   // Timer countdown effect
   useEffect(() => {
@@ -303,10 +310,24 @@ const QuizInterface = () => {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
-        console.log("Quiz completed", newAnswers);
-        navigate("/dashboard");
+        // Check for bonus eligibility
+        const correctCount = newAnswers.filter(a => a && a !== "").length;
+        if (correctCount >= 23 && !bonusClaimed) {
+          setShowBonus(true);
+        } else {
+          navigate("/dashboard");
+        }
       }
     }
+  };
+
+  // Claim bonus handler (moved to main scope)
+  const handleClaimBonus = () => {
+    setBonusClaimed(true);
+    setShowBonus(false);
+    // Store bonus in localStorage for dashboard
+    localStorage.setItem("jk_bonus_point", "1");
+    navigate("/dashboard");
   };
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
@@ -331,12 +352,56 @@ const QuizInterface = () => {
     >
       <div className="absolute inset-0 bg-white/70 backdrop-blur-sm"></div>
       <div className="relative w-full flex items-center justify-center">
-  <Card className="w-full max-w-3xl shadow-2xl">
+        {/* Bonus Modal */}
+        {showBonus && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+            <div className="bg-white rounded-xl shadow-2xl p-8 max-w-sm w-full flex flex-col items-center animate-fade-in">
+              <Gift className="h-16 w-16 text-yellow-500 mb-4 animate-bounce" />
+              <h2 className="text-2xl font-bold mb-2 text-primary">Bonus Unlocked!</h2>
+              <p className="mb-4 text-center">You answered 23 or more questions!<br/>Claim your bonus point for your dashboard.</p>
+              <Button onClick={handleClaimBonus} className="bg-gradient-to-r from-yellow-400 to-green-400 text-white shadow-lg">
+                Claim Bonus Point
+              </Button>
+            </div>
+          </div>
+        )}
+        {/* Main Quiz Card */}
+        <Card className="w-full max-w-3xl shadow-2xl">
         <CardHeader>
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 relative">
               <Brain className="h-6 w-6 text-secondary" />
               <CardTitle className="text-2xl">Comprehensive Career Assessment</CardTitle>
+              {/* Bonus Progress Circle */}
+              <div className="ml-4 relative flex items-center">
+                <svg width="38" height="38" viewBox="0 0 38 38">
+                  <circle
+                    cx="19" cy="19" r="16"
+                    stroke="#e5e7eb"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <circle
+                    cx="19" cy="19" r="16"
+                    stroke="#fbbf24"
+                    strokeWidth="4"
+                    fill="none"
+                    strokeDasharray={2 * Math.PI * 16}
+                    strokeDashoffset={(1 - bonusProgress) * 2 * Math.PI * 16}
+                    strokeLinecap="round"
+                    style={{ transition: 'stroke-dashoffset 0.5s' }}
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {canClaimBonus ? (
+                    <button onClick={handleClaimBonus} aria-label="Claim your bonus">
+                      <Gift className="h-6 w-6 text-yellow-500 animate-bounce cursor-pointer" />
+                    </button>
+                  ) : (
+                    <Star className="h-5 w-5 text-yellow-400 opacity-80" />
+                  )}
+                </div>
+              </div>
             </div>
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Clock className="h-4 w-4" />

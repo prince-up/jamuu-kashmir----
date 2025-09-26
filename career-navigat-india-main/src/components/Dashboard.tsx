@@ -17,8 +17,14 @@ import {
 import VoiceAssistant from "./VoiceAssistant";
 
 const Dashboard = () => {
+  // Check for bonus claim in localStorage
+  const bonusClaimed = typeof window !== 'undefined' && localStorage.getItem("jk_bonus_point") === "1";
+  // Generate a coupon code (static or random for now)
+  const couponCode = "JK-CAREER-2025";
+  // Get user name from localStorage if available
+  const storedName = typeof window !== 'undefined' ? localStorage.getItem("jk_user_name") : null;
   const userData = {
-    name: "Priya Sharma",
+    name: storedName || "Priya Sharma",
     class: "Class 12 - Science",
     completedAssessments: 3,
     totalAssessments: 5,
@@ -87,6 +93,30 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-light/5 via-secondary-light/5 to-accent-light/5">
+      {/* Bonus Coupon Card */}
+      {bonusClaimed && (
+        <div className="container mx-auto pt-6" style={{ marginTop: '4.5rem' }}>
+          <div className="flex justify-center">
+            <Card className="max-w-lg w-full bg-gradient-to-r from-yellow-200 via-green-100 to-green-300 border-2 border-yellow-400 shadow-xl animate-fade-in">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-yellow-700">
+                  🎁 Bonus Unlocked!
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col items-center gap-2">
+                  <span className="text-lg font-semibold text-green-800">Congratulations! You have claimed your bonus point.</span>
+                  <span className="text-base text-green-700">Use this coupon code anywhere on the platform:</span>
+                  <div className="bg-white border border-yellow-400 rounded-lg px-6 py-2 text-2xl font-mono font-bold text-yellow-700 tracking-widest select-all shadow-md">
+                    {couponCode}
+                  </div>
+                  <span className="text-xs text-muted-foreground mt-2">Copy and use this code for special offers, discounts, or premium features in the future!</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      )}
       {/* Header */}
       <div className="bg-background/80 backdrop-blur-sm border-b border-border p-6">
         <div className="container mx-auto">

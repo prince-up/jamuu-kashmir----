@@ -35,13 +35,13 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone Support",
-      details: ["+91-1234-567-890", "+91-0987-654-321"],
+      details: ["+91 7986614646", "+91 9616757491"],
       color: "accent"
     },
     {
       icon: Mail,
       title: "Email Support",
-      details: ["help@margdashrshan.in", "careers@margdashrshan.in"],
+      details: ["princeyadav76001@gmail.com"],
       color: "primary"
     }
   ];

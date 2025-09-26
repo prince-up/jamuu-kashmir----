@@ -10,11 +10,11 @@ import DashboardPage from "./pages/DashboardPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Features from "./pages/Features";
-
 import NotFound from "./pages/NotFound";
 import Mentors from "./pages/Mentors";
 import Courses from "./pages/Courses";
 import CollegeFinderPage from "./pages/CollegeFinderPage";
+import VoiceAssistant from "@/components/VoiceAssistant";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +38,8 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        {/* Global animated chatbot for all pages */}
+        <VoiceAssistant />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

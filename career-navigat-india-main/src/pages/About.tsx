@@ -19,22 +19,40 @@ import {
 const About = () => {
   const teamMembers = [
     {
-      name: "Dr. Rajesh Kumar",
+      name: "Prince",
       role: "AI Research Lead",
       expertise: "Machine Learning & Career Psychology",
-      location: "Srinagar, J&K"
+      location: "Ghzaipur UP"
     },
     {
-      name: "Priya Sharma", 
+      name: "Shalvi",
       role: "Education Specialist",
       expertise: "Curriculum Design & Student Counseling",
-      location: "Jammu, J&K"
+      location: "M.P"
     },
     {
-      name: "Mohammad Ali",
+      name: "Utsav",
       role: "Technology Director",
       expertise: "Full-Stack Development & EdTech",
-      location: "Srinagar, J&K"
+      location: "Chandigarh-Punjab"
+    },
+    {
+      name: "Amit",
+      role: "Mentor",
+      expertise: "Career Guidance & Motivation",
+      location: "Jammu & Kashmir"
+    },
+    {
+      name: "Jaggi",
+      role: "Mentor",
+      expertise: "Student Support & Outreach",
+      location: "Jamu-kashmir"
+    },
+    {
+      name: "Aman",
+      role: "Mentor",
+      expertise: "Community Engagement",
+      location: "Jammu-Kashmir"
     }
   ];
 
@@ -50,30 +68,28 @@ const About = () => {
       <Header />
       
       <main className="pt-20">
-        {/* Hero Section with J&K background */}
-        <section className="relative py-20">
-          <div className="absolute inset-0 z-0">
-            <img
-              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80"
-              alt="Dal Lake, Kashmir"
-              className="w-full h-full object-cover object-center opacity-80"
-              style={{ filter: 'brightness(0.7) blur(1px)' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-secondary/60 to-accent/70 opacity-80"></div>
-          </div>
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <Badge variant="secondary" className="mb-4 bg-white/80 text-primary">About Margdarshan J&K</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+        {/* Hero Section with full J&K background */}
+        <section className="relative min-h-[60vh] flex items-center justify-center">
+          <img
+            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1500&q=80"
+            alt="Jammu & Kashmir Valley"
+            className="absolute inset-0 w-full h-full object-cover object-center z-0"
+            style={{ filter: 'brightness(0.6)' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-10" />
+          <div className="relative z-20 w-full flex flex-col items-center justify-center text-center px-4">
+            <Badge variant="secondary" className="mb-4 bg-white/80 text-primary shadow-lg">About Margdarshan J&K</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-xl">
               Empowering J&K Students for
-              <span className="bg-gradient-to-r from-yellow-200 via-green-200 to-blue-200 bg-clip-text text-transparent block mt-2">
+              <span className="block mt-2 text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-green-200 to-blue-400 drop-shadow-lg">
                 Brighter Futures
               </span>
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8 drop-shadow">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8 drop-shadow-lg">
               Founded with a mission to bridge the gap between traditional education and modern career opportunities, 
               we're dedicated to helping students of Jammu & Kashmir discover their true potential.
             </p>
-            <Button size="lg" asChild>
+            <Button size="lg" asChild className="shadow-xl">
               <Link to="/onboarding">
                 Start Your Journey
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -188,15 +204,19 @@ const About = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {teamMembers.map((member, index) => (
-                <Card key={index} className="hover-lift transition-smooth">
+                <Card
+                  key={index}
+                  className="hover-lift transition-smooth bg-white/30 backdrop-blur-md border-none shadow-xl"
+                  style={{ boxShadow: '0 8px 32px 0 rgba(31,38,135,0.18)' }}
+                >
                   <CardContent className="p-6 text-center">
-                    <div className="w-20 h-20 bg-gradient-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-400/80 to-green-300/80 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                       <Users className="h-10 w-10 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                    <Badge variant="secondary" className="mb-3">{member.role}</Badge>
-                    <p className="text-muted-foreground mb-3">{member.expertise}</p>
-                    <div className="flex items-center justify-center text-sm text-muted-foreground">
+                    <h3 className="text-xl font-bold mb-2 text-gray-900">{member.name}</h3>
+                    <Badge variant="secondary" className="mb-3 bg-gradient-to-r from-blue-200 via-green-200 to-yellow-200 text-primary shadow">{member.role}</Badge>
+                    <p className="mb-3 text-gray-800">{member.expertise}</p>
+                    <div className="flex items-center justify-center text-sm text-gray-700">
                       <MapPin className="h-4 w-4 mr-1" />
                       {member.location}
                     </div>

@@ -82,17 +82,7 @@ const Hero = () => {
               <p className="text-sm text-muted-foreground">Identify gaps and get personalized learning recommendations</p>
             </Card>
           </div>
-            {/* Sample Questions Section */}
-            <div className="bg-white/80 rounded-lg shadow-md p-4 mb-6 inline-block">
-              <div className="font-semibold text-gray-700 mb-2">Try asking:</div>
-              <ul className="flex flex-wrap gap-2 justify-center">
-                {sampleQuestions.map((q, i) => (
-                  <li key={i} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-blue-200 transition">
-                    {q}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Sample Questions Section removed as requested */}
         </div>
       </div>
     </section>

@@ -230,26 +230,25 @@ const Features = () => {
           </div>
         </section>
 
-        {/* Additional Features Grid */}
-        <section className="py-20">
+        {/* Additional Features Grid - Enhanced */}
+        <section className="py-20 bg-gradient-to-br from-blue-50 via-green-50 to-yellow-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4">Additional Benefits</h2>
+              <h2 className="text-3xl font-bold mb-4 text-primary">Additional Benefits</h2>
               <p className="text-lg text-muted-foreground">
-                More reasons to choose Margdashrshan J&K
+                Why thousands of J&K students trust Margdarshan for their career journey
               </p>
             </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {additionalFeatures.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <Card key={index} className="text-center hover-lift transition-smooth">
+                  <Card key={index} className="text-center hover-lift transition-smooth bg-white/90 shadow-xl border-2 border-primary/10">
                     <CardContent className="p-6">
-                      <div className={`w-16 h-16 bg-gradient-${feature.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                      <div className={`w-16 h-16 bg-gradient-to-br from-blue-400 via-green-300 to-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg`}>
                         <Icon className="h-8 w-8 text-white" />
                       </div>
-                      <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                      <h3 className="text-lg font-bold mb-2 text-primary">{feature.title}</h3>
                       <p className="text-muted-foreground text-sm">{feature.description}</p>
                     </CardContent>
                   </Card>
@@ -259,63 +258,57 @@ const Features = () => {
           </div>
         </section>
 
-        {/* Success Stories */}
-        <section className="py-20 bg-gradient-to-br from-secondary-light/10 to-accent-light/10">
+        {/* Success Stories - Enhanced */}
+        <section className="py-20 bg-gradient-to-br from-blue-100 via-green-100 to-yellow-100">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4">Student Success Stories</h2>
+              <h2 className="text-3xl font-bold mb-4 text-primary">Student Success Stories</h2>
               <p className="text-lg text-muted-foreground">
-                Real results from J&K students who found their path
+                Real stories from J&K students who found their path with Margdarshan
               </p>
             </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="hover-lift transition-smooth">
+              <Card className="hover-lift transition-smooth bg-white/90 shadow-xl border-2 border-primary/10">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <Award className="h-8 w-8 text-primary mr-3" />
                     <div>
-                      <h3 className="font-bold">Aisha Khan</h3>
+                      <h3 className="font-bold text-primary">Aisha Khan</h3>
                       <p className="text-sm text-muted-foreground">Srinagar</p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    "The AI recommendations helped me discover my passion for computer science. 
-                    Now I'm pursuing engineering at NIT Srinagar!"
+                  <p className="text-muted-foreground mb-4 italic">
+                    “Margdarshan’s AI recommendations helped me discover my passion for computer science. Now I’m pursuing engineering at NIT Srinagar!”
                   </p>
                   <Badge variant="secondary">Computer Science</Badge>
                 </CardContent>
               </Card>
-
-              <Card className="hover-lift transition-smooth">
+              <Card className="hover-lift transition-smooth bg-white/90 shadow-xl border-2 border-secondary/10">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <Heart className="h-8 w-8 text-secondary mr-3" />
                     <div>
-                      <h3 className="font-bold">Rahul Sharma</h3>
+                      <h3 className="font-bold text-secondary">Rahul Sharma</h3>
                       <p className="text-sm text-muted-foreground">Jammu</p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    "The mentorship program connected me with industry professionals. 
-                    I got placement in a top IT company through their guidance."
+                  <p className="text-muted-foreground mb-4 italic">
+                    “The mentorship program connected me with industry professionals. I got placement in a top IT company through their guidance.”
                   </p>
                   <Badge variant="secondary">Software Engineering</Badge>
                 </CardContent>
               </Card>
-
-              <Card className="hover-lift transition-smooth">
+              <Card className="hover-lift transition-smooth bg-white/90 shadow-xl border-2 border-accent/10">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <TrendingUp className="h-8 w-8 text-accent mr-3" />
                     <div>
-                      <h3 className="font-bold">Priya Devi</h3>
+                      <h3 className="font-bold text-accent">Priya Devi</h3>
                       <p className="text-sm text-muted-foreground">Leh</p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    "The regional opportunities feature showed me tourism management prospects in Ladakh. 
-                    I'm now running a successful eco-tourism business!"
+                  <p className="text-muted-foreground mb-4 italic">
+                    “The regional opportunities feature showed me tourism management prospects in Ladakh. I’m now running a successful eco-tourism business!”
                   </p>
                   <Badge variant="secondary">Tourism Management</Badge>
                 </CardContent>

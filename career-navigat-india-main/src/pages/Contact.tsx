@@ -72,21 +72,29 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-yellow-50">
       <Header />
-      
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary-light/10 via-secondary-light/5 to-accent-light/10">
-          <div className="container mx-auto px-4 text-center">
-            <Badge variant="secondary" className="mb-4">Get in Touch</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+        {/* Hero Section with J&K background */}
+        <section className="relative py-20">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1500&q=80"
+              alt="Jammu & Kashmir Valley"
+              className="w-full h-full object-cover object-center opacity-80"
+              style={{ filter: 'brightness(0.7) blur(1px)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-secondary/60 to-accent/70 opacity-80"></div>
+          </div>
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <Badge variant="secondary" className="mb-4 bg-white/80 text-primary">Get in Touch</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
               We're Here to
-              <span className="bg-gradient-primary bg-clip-text text-transparent block mt-2">
+              <span className="bg-gradient-to-r from-yellow-200 via-green-200 to-blue-200 bg-clip-text text-transparent block mt-2">
                 Help You Succeed
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8 drop-shadow">
               Have questions about your career path? Need guidance on educational opportunities in J&K? 
               Our expert team is ready to support your journey.
             </p>
@@ -96,9 +104,9 @@ const Contact = () => {
         <div className="container mx-auto px-4 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="border-primary/20">
+            <Card className="border-2 border-primary/30 bg-white/90 shadow-xl shadow-blue-100/40">
               <CardHeader>
-                <CardTitle className="flex items-center text-2xl">
+                <CardTitle className="flex items-center text-2xl text-primary">
                   <MessageSquare className="h-8 w-8 text-primary mr-3" />
                   Send Us a Message
                 </CardTitle>
@@ -106,52 +114,47 @@ const Contact = () => {
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="Enter your first name" />
+                    <Label htmlFor="firstName" className="text-blue-900">First Name</Label>
+                    <Input id="firstName" placeholder="Enter your first name" className="bg-blue-50/60 focus:ring-primary" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Enter your last name" />
+                    <Label htmlFor="lastName" className="text-blue-900">Last Name</Label>
+                    <Input id="lastName" placeholder="Enter your last name" className="bg-blue-50/60 focus:ring-primary" />
                   </div>
                 </div>
-                
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" />
+                  <Label htmlFor="email" className="text-blue-900">Email Address</Label>
+                  <Input id="email" type="email" placeholder="your.email@example.com" className="bg-green-50/60 focus:ring-accent" />
                 </div>
-                
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" placeholder="+91 XXXXX XXXXX" />
+                  <Label htmlFor="phone" className="text-blue-900">Phone Number</Label>
+                  <Input id="phone" placeholder="+91 XXXXX XXXXX" className="bg-yellow-50/60 focus:ring-accent" />
                 </div>
-                
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="What's this about?" />
+                  <Label htmlFor="subject" className="text-blue-900">Subject</Label>
+                  <Input id="subject" placeholder="What's this about?" className="bg-blue-50/60 focus:ring-primary" />
                 </div>
-                
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message" className="text-blue-900">Message</Label>
                   <Textarea 
                     id="message" 
                     placeholder="Tell us how we can help you..."
                     rows={5}
+                    className="bg-green-50/60 focus:ring-accent"
                   />
                 </div>
-                
-                <Button className="w-full" size="lg">
+                <Button className="w-full bg-gradient-to-r from-primary to-accent text-white text-lg shadow-md hover:from-accent hover:to-primary" size="lg">
                   <Send className="h-5 w-5 mr-2" />
                   Send Message
                 </Button>
               </CardContent>
             </Card>
-
             {/* Contact Information */}
             <div className="space-y-8">
               {/* Contact Details */}
-              <Card>
+              <Card className="border-2 border-accent/30 bg-white/90 shadow-lg shadow-green-100/40">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-2xl">
+                  <CardTitle className="flex items-center text-2xl text-accent">
                     <Phone className="h-8 w-8 text-secondary mr-3" />
                     Contact Information
                   </CardTitle>
@@ -161,11 +164,11 @@ const Contact = () => {
                     const Icon = info.icon;
                     return (
                       <div key={index} className="flex items-start space-x-4">
-                        <div className={`w-12 h-12 bg-gradient-${info.color} rounded-lg flex items-center justify-center`}>
+                        <div className={`w-12 h-12 bg-gradient-${info.color} rounded-lg flex items-center justify-center shadow-md shadow-${info.color}/30`}>
                           <Icon className="h-6 w-6 text-white" />
                         </div>
                         <div>
-                          <h3 className="font-semibold mb-1">{info.title}</h3>
+                          <h3 className="font-semibold mb-1 text-primary">{info.title}</h3>
                           {info.details.map((detail, idx) => (
                             <p key={idx} className="text-muted-foreground text-sm">{detail}</p>
                           ))}
@@ -175,11 +178,10 @@ const Contact = () => {
                   })}
                 </CardContent>
               </Card>
-
               {/* Support Hours */}
-              <Card>
+              <Card className="border-2 border-yellow-300/40 bg-yellow-50/80 shadow-md">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-xl">
+                  <CardTitle className="flex items-center text-xl text-yellow-800">
                     <Clock className="h-6 w-6 text-accent mr-2" />
                     Support Hours
                   </CardTitle>
@@ -188,15 +190,15 @@ const Contact = () => {
                   <div className="space-y-3">
                     {supportHours.map((schedule, index) => (
                       <div key={index} className="flex justify-between items-center">
-                        <span className="font-medium">{schedule.day}</span>
+                        <span className="font-medium text-primary">{schedule.day}</span>
                         <span className="text-muted-foreground">{schedule.time}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 p-4 bg-accent-light/20 rounded-lg">
+                  <div className="mt-6 p-4 bg-gradient-to-r from-accent/20 to-yellow-100 rounded-lg">
                     <div className="flex items-center mb-2">
                       <HeadphonesIcon className="h-5 w-5 text-accent mr-2" />
-                      <span className="font-medium">24/7 Emergency Support</span>
+                      <span className="font-medium text-accent">24/7 Emergency Support</span>
                     </div>
                     <p className="text-sm text-muted-foreground">
                       For urgent career guidance needs, our AI assistant is available round the clock.
@@ -204,25 +206,24 @@ const Contact = () => {
                   </div>
                 </CardContent>
               </Card>
-
               {/* Quick Links */}
-              <Card>
+              <Card className="border-2 border-primary/20 bg-gradient-to-r from-blue-50 via-green-50 to-yellow-50 shadow-md">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-xl">
+                  <CardTitle className="flex items-center text-xl text-primary">
                     <Users className="h-6 w-6 text-primary mr-2" />
                     Quick Actions
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button variant="outline" className="w-full justify-start border-primary text-primary hover:bg-primary/10">
                     <Globe className="h-4 w-4 mr-2" />
                     Schedule a Call
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button variant="outline" className="w-full justify-start border-accent text-accent hover:bg-accent/10">
                     <MessageSquare className="h-4 w-4 mr-2" />
                     Live Chat Support
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button variant="outline" className="w-full justify-start border-secondary text-secondary hover:bg-secondary/10">
                     <Mail className="h-4 w-4 mr-2" />
                     Email Support
                   </Button>
@@ -234,17 +235,16 @@ const Contact = () => {
           {/* FAQ Section */}
           <section className="mt-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+              <h2 className="text-3xl font-bold mb-4 text-primary">Frequently Asked Questions</h2>
               <p className="text-lg text-muted-foreground">
                 Quick answers to common questions about our services
               </p>
             </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {faqs.map((faq, index) => (
-                <Card key={index} className="hover-lift transition-smooth">
+                <Card key={index} className="hover-lift transition-smooth border-2 border-accent/20 bg-gradient-to-br from-green-50 via-yellow-50 to-blue-50 shadow-md">
                   <CardContent className="p-6">
-                    <h3 className="font-semibold mb-3 text-lg">{faq.question}</h3>
+                    <h3 className="font-semibold mb-3 text-lg text-accent">{faq.question}</h3>
                     <p className="text-muted-foreground">{faq.answer}</p>
                   </CardContent>
                 </Card>

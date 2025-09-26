@@ -50,17 +50,26 @@ const About = () => {
       <Header />
       
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary-light/10 via-secondary-light/5 to-accent-light/10">
-          <div className="container mx-auto px-4 text-center">
-            <Badge variant="secondary" className="mb-4">About Margdashrshan J&K</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Empowering J&K's Future 
-              <span className="bg-gradient-primary bg-clip-text text-transparent block mt-2">
-                One Student at a Time
+        {/* Hero Section with J&K background */}
+        <section className="relative py-20">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80"
+              alt="Dal Lake, Kashmir"
+              className="w-full h-full object-cover object-center opacity-80"
+              style={{ filter: 'brightness(0.7) blur(1px)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-secondary/60 to-accent/70 opacity-80"></div>
+          </div>
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <Badge variant="secondary" className="mb-4 bg-white/80 text-primary">About Margdarshan J&K</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+              Empowering J&K Students for
+              <span className="bg-gradient-to-r from-yellow-200 via-green-200 to-blue-200 bg-clip-text text-transparent block mt-2">
+                Brighter Futures
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8 drop-shadow">
               Founded with a mission to bridge the gap between traditional education and modern career opportunities, 
               we're dedicated to helping students of Jammu & Kashmir discover their true potential.
             </p>

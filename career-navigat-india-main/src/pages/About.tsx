@@ -104,7 +104,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Mission Block with gradient background */}
               <Card
-                className="hover:shadow-primary transition-all duration-300"
+                className="border-primary/20 hover:shadow-primary transition-all duration-300"
                 style={{
                   background: "linear-gradient(135deg, #ffe7c7 0%, #ffd6ec 40%, #d1fae5 100%)", // light orange, pink, green
                   boxShadow: "0 8px 32px 0 rgba(31,38,135,0.10)"
@@ -140,7 +140,7 @@ const About = () => {
 
               {/* Vision Block with gradient background */}
               <Card
-                className="hover:shadow-secondary transition-all duration-300"
+                className="border-secondary/20 hover:shadow-secondary transition-all duration-300"
                 style={{
                   background: "linear-gradient(135deg, #ffd6ec 0%, #ffe7c7 50%, #d1fae5 100%)", // light pink, orange, green
                   boxShadow: "0 8px 32px 0 rgba(31,38,135,0.10)"
@@ -185,14 +185,14 @@ const About = () => {
     zIndex: 1
   }}
 >
-  {/* Jammu & Kashmir mountains background image, light overlay */}
+  {/* Education-related background image, more visible and NO black overlay */}
   <img
-    src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1200&q=80"
-    alt="Jammu & Kashmir Mountains"
-    className="absolute inset-0 w-full h-full object-cover object-center opacity-65 pointer-events-none select-none"
-    style={{ zIndex: 0, filter: "brightness(0.85) blur(1px)" }}
+    src="https://png.pngtree.com/thumb_back/fh260/background/20210527/pngtree-education-fun-games-classroom-kit-image_718789.jpg"
+    alt="Education Fun Classroom"
+    className="absolute inset-0 w-full h-full object-cover object-center opacity-70 pointer-events-none select-none"
+    style={{ zIndex: 0, filter: "blur(1px)" }}
   />
-  <div className="absolute inset-0 bg-white/40" style={{ zIndex: 1 }} />
+  {/* Removed the black overlay */}
   <div className="container mx-auto px-4 relative" style={{ zIndex: 2 }}>
     <div className="text-center mb-12">
       <h2 className="text-3xl font-bold mb-4">Our Impact So Far</h2>

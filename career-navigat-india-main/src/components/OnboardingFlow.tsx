@@ -185,6 +185,10 @@ const OnboardingFlow = () => {
             
             {currentStep === steps.length - 1 ? (
               <Button onClick={() => {
+                // Save name to localStorage for dashboard greeting
+                if (formData.name) {
+                  localStorage.setItem("jk_user_name", formData.name);
+                }
                 console.log("Complete onboarding", formData);
                 navigate("/quiz");
               }}>

@@ -176,25 +176,7 @@ const Mentors = () => {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-pink-50 to-yellow-50 py-10">
-			{/* Navbar */}
-			<nav className="fixed top-0 left-0 w-full bg-white/95 border-b border-blue-200 shadow-md z-50 flex items-center justify-between px-8 py-3">
-				<div className="flex items-center gap-4">
-					{/* Attractive Profile Icon without star, with subtle blue ring and shadow */}
-					<div className="relative">
-						<div className="rounded-full bg-gradient-to-tr from-blue-600 via-blue-400 to-cyan-300 p-1 shadow-lg ring-4 ring-blue-200 transition-transform hover:scale-105">
-							<UserCircle className="h-16 w-16 text-white drop-shadow-lg" />
-						</div>
-					</div>
-					<span className="text-xl md:text-2xl font-semibold text-blue-700 tracking-tight select-none">
-						Hi, {username}
-					</span>
-				</div>
-				<div className="text-2xl md:text-3xl font-extrabold text-blue-700 tracking-tight select-none">
-					margdarshan J&amp;K
-				</div>
-			</nav>
-
-			<div className="pt-24">
+			<div className="pt-8">
 				<h1 className="text-4xl font-extrabold mb-4 text-center text-gray-900 drop-shadow-lg">
 					Meet Our Mentors
 				</h1>

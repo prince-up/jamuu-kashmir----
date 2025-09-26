@@ -187,7 +187,7 @@ const About = () => {
 >
   {/* Education-related background image, more visible and NO black overlay */}
   <img
-    src="https://png.pngtree.com/thumb_back/fh260/background/20210527/pngtree-education-fun-games-classroom-kit-image_718789.jpg"
+    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
     alt="Education Fun Classroom"
     className="absolute inset-0 w-full h-full object-cover object-center opacity-70 pointer-events-none select-none"
     style={{ zIndex: 0, filter: "blur(1px)" }}

@@ -31,7 +31,7 @@ const About = () => {
       location: "M.P"
     },
     {
-      name: "Utsav",
+      name: "Utsah",
       role: "Technology Director",
       expertise: "Full-Stack Development & EdTech",
       location: "Chandigarh-Punjab"
@@ -46,7 +46,7 @@ const About = () => {
       name: "Jaggi",
       role: "Mentor",
       expertise: "Student Support & Outreach",
-      location: "Jamu-kashmir"
+      location: "Jammu-kashmir"
     },
     {
       name: "Aman",
@@ -102,7 +102,14 @@ const About = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <Card className="border-primary/20 hover:shadow-primary transition-all duration-300">
+              {/* Mission Block with gradient background */}
+              <Card
+                className="hover:shadow-primary transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #ffe7c7 0%, #ffd6ec 40%, #d1fae5 100%)", // light orange, pink, green
+                  boxShadow: "0 8px 32px 0 rgba(31,38,135,0.10)"
+                }}
+              >
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl">
                     <Target className="h-8 w-8 text-primary mr-3" />
@@ -131,7 +138,14 @@ const About = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-secondary/20 hover:shadow-secondary transition-all duration-300">
+              {/* Vision Block with gradient background */}
+              <Card
+                className="hover:shadow-secondary transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #ffd6ec 0%, #ffe7c7 50%, #d1fae5 100%)", // light pink, orange, green
+                  boxShadow: "0 8px 32px 0 rgba(31,38,135,0.10)"
+                }}
+              >
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl">
                     <Sparkles className="h-8 w-8 text-secondary mr-3" />
@@ -164,33 +178,47 @@ const About = () => {
         </section>
 
         {/* Achievements */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Our Impact So Far</h2>
-              <p className="text-lg text-muted-foreground">
-                Numbers that reflect our commitment to student success
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {achievements.map((achievement, index) => {
-                const Icon = achievement.icon;
-                return (
-                  <Card key={index} className="text-center hover-lift transition-smooth">
-                    <CardContent className="p-6">
-                      <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Icon className="h-8 w-8 text-white" />
-                      </div>
-                      <h3 className="text-3xl font-bold text-primary mb-2">{achievement.number}</h3>
-                      <p className="text-sm text-muted-foreground">{achievement.label}</p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        <section
+  className="py-20 bg-muted/30 relative overflow-hidden"
+  style={{
+    position: "relative",
+    zIndex: 1
+  }}
+>
+  {/* Jammu & Kashmir mountains background image, light overlay */}
+  <img
+    src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1200&q=80"
+    alt="Jammu & Kashmir Mountains"
+    className="absolute inset-0 w-full h-full object-cover object-center opacity-65 pointer-events-none select-none"
+    style={{ zIndex: 0, filter: "brightness(0.85) blur(1px)" }}
+  />
+  <div className="absolute inset-0 bg-white/40" style={{ zIndex: 1 }} />
+  <div className="container mx-auto px-4 relative" style={{ zIndex: 2 }}>
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold mb-4">Our Impact So Far</h2>
+      <p className="text-lg text-muted-foreground">
+        Numbers that reflect our commitment to student success
+      </p>
+    </div>
+    
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {achievements.map((achievement, index) => {
+        const Icon = achievement.icon;
+        return (
+          <Card key={index} className="text-center hover-lift transition-smooth">
+            <CardContent className="p-6">
+              <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-primary mb-2">{achievement.number}</h3>
+              <p className="text-sm text-muted-foreground">{achievement.label}</p>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
         {/* Team */}
         <section className="py-20">

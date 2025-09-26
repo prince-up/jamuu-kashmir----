@@ -87,13 +87,15 @@ const EnhancedOnboarding = () => {
     "Engineering", "Medical", "Business", "Computer Science", "Other"
   ];
 
-  const states = [
-    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
-    "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
-    "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
-    "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
-    "Jammu and Kashmir", "Ladakh", "Delhi", "Puducherry"
+  const states = [ 
+    "Jammu and Kashmir"
+  ];
+
+  // Add all districts of Jammu and Kashmir
+  const jkDistricts = [
+    "Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu",
+    "Kathua", "Kishtwar", "Kulgam", "Kupwara", "Poonch", "Pulwama", "Rajouri",
+    "Ramban", "Reasi", "Samba", "Shopian", "Srinagar", "Udhampur"
   ];
 
   const interests = [
@@ -265,7 +267,7 @@ const EnhancedOnboarding = () => {
                     <MapPin className="h-4 w-4 text-accent" />
                     State
                   </Label>
-                  <Select value={formData.state} onValueChange={(value) => setFormData(prev => ({ ...prev, state: value }))}>
+                  <Select value={formData.state} onValueChange={(value) => setFormData(prev => ({ ...prev, state: value, district: "" }))}>
                     <SelectTrigger className="transition-smooth hover-lift">
                       <SelectValue placeholder="Select your state" />
                     </SelectTrigger>
@@ -282,13 +284,22 @@ const EnhancedOnboarding = () => {
                     <MapPin className="h-4 w-4 text-accent" />
                     District/City
                   </Label>
-                  <Input
-                    id="district"
-                    placeholder="Enter your district or city"
+                  <Select
                     value={formData.district}
-                    onChange={(e) => setFormData(prev => ({ ...prev, district: e.target.value }))}
-                    className="transition-smooth hover-lift"
-                  />
+                    onValueChange={(value) => setFormData(prev => ({ ...prev, district: value }))}
+                    disabled={!formData.state}
+                  >
+                    <SelectTrigger className="transition-smooth hover-lift">
+                      <SelectValue placeholder="Select your district" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {formData.state === "Jammu and Kashmir" &&
+                        jkDistricts.map((district) => (
+                          <SelectItem key={district} value={district}>{district}</SelectItem>
+                        ))
+                      }
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
